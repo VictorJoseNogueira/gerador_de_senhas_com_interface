@@ -24,7 +24,7 @@ class janela:
         self.caixadetexto2 = Entry(self.janela)
         self.caixadetexto2.place(anchor=W, x=55, y=110, width=200, height=20)
         self.botao1 = self.botoes(self.janela,text='Gerar Senha', anchor=W, comando=self.senhar,x=10, y=120, width=100, height=20)
-        self.botao2 = self.botoes(self.janela, text='Salvar Senha', anchor=W, comando=self.salvarsenhas, x=10,y= 150,width=100, height=20)
+        self.botao2 = self.botoes(self.janela, text='Salvar Senha', anchor=W, comando=self.combinandofunc, x=10,y= 150,width=100, height=20)
         self.janela.mainloop()
 
     def salvarsenhas(self):
@@ -35,18 +35,25 @@ class janela:
         bancodesenhas.write('-' * 50 + ' \n')
         bancodesenhas.close()
 
+    def delete(self):
+        self.caixadetexto.delete(0, END)
+        self.caixadetexto2.delete(0, END)
 
+    def boxmsg(self):
+        resp = messagebox.askquestion(title='Gerador', message='senha gerada com sucesso.\ndeseja continuar?')
+        if resp == 'no':
+            quit()
+        elif resp == 'yes':
+            self.delete()
 
-    def textbotao(self):
-        messagebox.showinfo('Teste', 'Senha gerada')
+        else:
+            print('\033[31msomething goes wrong\033[m')
 
     def textos(self, local, text, anchor, x, y, width, height):
         Label(local, text=text, anchor=anchor).place(x=x, y=y, width=width, height=height)
 
-
     def caixatxts(self, local, anchor, x, y, width, height):
         Entry(local).place(anchor=anchor, x=x, y=y, width=width, height=height)
-
 
     def botoes(self, local, text, anchor, x, y, width, height, comando):
         Button(local, text=text, anchor=anchor, command=comando).place(x=x, y=y, width=width, height=height)
@@ -83,6 +90,9 @@ class janela:
         messagebox.showinfo('Senha gerada', f'{x}')
 
 
+    def combinandofunc(self):
+        self.salvarsenhas()
+        self.boxmsg()
 
 
 c = janela(titulo='Gerador.py', lxa='300x250')
