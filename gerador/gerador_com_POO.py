@@ -1,45 +1,88 @@
 from tkinter import *
 from tkinter import messagebox
+from random import randint, choice
 import os
 
 arquivo = os.path.dirname(__file__)
 nome_Do_arquivo_criado = arquivo+'\\gerador_de_senhas_automatico.txt'
 
-def salvarsenhas():
-    bancodesenhas = open(nome_Do_arquivo_criado, 'a')
-    bancodesenhas.write(f'site:  \n')
-    bancodesenhas.write(f'login: \n')
-    bancodesenhas.write(f'Senha: \n')
-    bancodesenhas.write('-'*50+'\n')
-    bancodesenhas.close()
-def textbotao():
-    messagebox.showinfo('Teste', 'Senha gerada')
-
-def textos(local, text, anchor, x, y, width, height):
-    Label(local, text=text, anchor=anchor).place(x=x, y=y, width=width, height=height)
-
-
-def caixatxts(local, anchor, x, y, width, height):
-    Entry(local).place(anchor=anchor, x=x, y=y, width=width, height=height)
-
-
-def botoes(local, text, anchor, x, y, width, height, comando):
-    Button(local, text=text, anchor=anchor, command=comando).place(x=x, y=y, width=width, height=height)
-
 
 class janela:
     def __init__(self, titulo='', lxa=''):
+        self.dicionario = []
         self.janela = Tk()
         self.janela.title(titulo)
         self.janela.geometry(lxa)
-        self.janela.textos = textos(self.janela,'Gerador de senhas', anchor=N, x=200, y=10, width=100, height=20)
-        self.janela.textos2 = textos(self.janela,'Site', anchor=N, x=200, y=30, width=100, height=20)
-        self.janela.caixadecriacao = caixatxts(self.janela, anchor=N, x=250, y=50, width=200, height=20)
-        self.janela.textos3 = textos(self.janela,'Login', anchor=N, x=200, y=70, width=100, height=20)
-        self.janela.caixatxt2 = caixatxts(self.janela, anchor=N, x=250, y=90, width=200, height=20)
-        self.janela.botao1 = botoes(self.janela, text='Gerar e salvar', anchor=W, comando=textbotao, x=200, y=150, width=80, height=20)
-        self.janela.botao2 = botoes(self.janela, text='salvando senha', anchor=W, comando=salvarsenhas, x=200, y=190, width=100, height=20)
+        self.escrita = Label(self.janela, text='Gerador de senhas', anchor=N)
+        self.escrita.place(x=10, y=10, width=100, height=20)
+        self.escrita2 = Label(self.janela, text='Site:', anchor=W)
+        self.escrita2.place(x=10, y=70, width=100, height=20)
+        self.caixadetexto = Entry(self.janela)
+        self.caixadetexto.place(anchor=W, x=55, y=80, width=200, height=20)
+        self.escrita3 = Label(self.janela, text='Log-in:', anchor=W)
+        self.escrita3.place(x=10, y=100, width=100, height=20)
+        self.caixadetexto2 = Entry(self.janela)
+        self.caixadetexto2.place(anchor=W, x=55, y=110, width=200, height=20)
+        self.botao1 = self.botoes(self.janela,text='Gerar Senha', anchor=W, comando=self.senhar,x=10, y=120, width=100, height=20)
+        self.botao2 = self.botoes(self.janela, text='Salvar Senha', anchor=W, comando=self.salvarsenhas, x=10,y= 150,width=100, height=20)
         self.janela.mainloop()
 
+    def salvarsenhas(self):
+        bancodesenhas = open(nome_Do_arquivo_criado, 'a')
+        bancodesenhas.write(f'site: ' + self.caixadetexto.get()+'\n')
+        bancodesenhas.write(f'login: ' + self.caixadetexto2.get() + '\n')
+        bancodesenhas.write(f'Senha: ' + self.dicionario[0] + '\n')
+        bancodesenhas.write('-' * 50 + ' \n')
+        bancodesenhas.close()
 
-c = janela(titulo='Gerador.py', lxa='500x500')
+
+
+    def textbotao(self):
+        messagebox.showinfo('Teste', 'Senha gerada')
+
+    def textos(self, local, text, anchor, x, y, width, height):
+        Label(local, text=text, anchor=anchor).place(x=x, y=y, width=width, height=height)
+
+
+    def caixatxts(self, local, anchor, x, y, width, height):
+        Entry(local).place(anchor=anchor, x=x, y=y, width=width, height=height)
+
+
+    def botoes(self, local, text, anchor, x, y, width, height, comando):
+        Button(local, text=text, anchor=anchor, command=comando).place(x=x, y=y, width=width, height=height)
+
+    def senhar(self):
+        self.dicionario.clear()
+        lista = ['!', '@', '#', '$', '%', '&', '*']
+        listaa = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'o', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+                  'u',
+                  'v', 'w', 'x', 'y', 'z']
+        senha = []
+
+        u = choice(lista)
+        d = choice(listaa)
+        t = choice(listaa)
+        q = choice(listaa)
+        g = choice(listaa)
+        s = choice(listaa)
+        se = randint(0, 9)
+        o = randint(0, 9)
+        senha.append(u)
+        senha.append(d)
+        senha.append(t)
+        senha.append(q)
+        senha.append(g)
+        senha.append(s)
+        var = str(se)
+        senha.append(var)
+        var1 = str(o)
+        senha.append(var1)
+        x = ''.join(senha)
+        self.dicionario.append(x)
+        print(x)
+        messagebox.showinfo('Senha gerada', f'{x}')
+
+
+
+
+c = janela(titulo='Gerador.py', lxa='300x250')
