@@ -90,10 +90,15 @@ class janela:
         print(x)
         messagebox.showinfo('Senha gerada', f'{x}')
 
-
     def combinandofunc(self):
-        self.salvarsenhas()
-        self.boxmsg()
+        if len(self.caixadetexto.get()) == 0:
+            messagebox.showinfo('Site esta vazio', 'por favor digite o site')
+
+        elif len(self.caixadetexto2.get()) == 0:
+            messagebox.showinfo('log-in esta vazio', 'por favor digite o log-in')
+        else:
+            self.salvarsenhas()
+            self.boxmsg()
 
 
 c = janela(titulo='Gerador.py', lxa='300x250')
