@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gerador_de_senhas_com_interface.iml" filepath="$PROJECT_DIR$/.idea/gerador_de_senhas_com_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/gerador_de_senhas_com_interfaceorigem.iml" filepath="$PROJECT_DIR$/.idea/gerador_de_senhas_com_interfaceorigem.iml" />
     </modules>
   </component>
 </project>

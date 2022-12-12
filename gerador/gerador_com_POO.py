@@ -8,6 +8,7 @@ nome_Do_arquivo_criado = arquivo+'\\gerador_de_senhas_automatico.txt'
 
 
 class janela:
+
     def __init__(self, titulo='', lxa=''):
         self.dicionario = []
         self.janela = Tk()
