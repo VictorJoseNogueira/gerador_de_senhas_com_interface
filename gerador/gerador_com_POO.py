@@ -1,3 +1,4 @@
+import tkinter
 from tkinter import *
 from tkinter import messagebox
 from random import randint, choice
@@ -24,8 +25,10 @@ class janela:
         self.escrita3.place(x=10, y=100, width=100, height=20)
         self.caixadetexto2 = Entry(self.janela)
         self.caixadetexto2.place(anchor=W, x=55, y=110, width=200, height=20)
-        self.botao1 = self.botoes(self.janela,text='Gerar Senha', anchor=N, comando=self.senhar,x=100, y=130, width=100, height=30)
-        self.botao2 = self.botoes(self.janela, text='Salvar Senha', anchor=N, comando=self.combinandofunc, x=100,y= 180,width=100, height=30)
+        self.check = tkinter.Checkbutton(self.janela, text='site permite caracteres especiais ?')
+        self.check.place(x=10, y=130)
+        self.botao1 = self.botoes(self.janela,text='Gerar Senha', anchor=N, comando=self.senhar,x=100, y=170, width=100, height=30)
+        self.botao2 = self.botoes(self.janela, text='Salvar Senha', anchor=N, comando=self.combinandofunc, x=100,y=200,width=100, height=30)
         self.janela.config(background='#d3d3d3')
         self.janela.mainloop()
 
