@@ -27,8 +27,9 @@ class janela:
         self.caixadetexto2.place(anchor=W, x=55, y=110, width=200, height=20)
         self.check = tkinter.Checkbutton(self.janela, text='site permite caracteres especiais ?')
         self.check.place(x=10, y=130)
-        self.botao1 = self.botoes(self.janela,text='Gerar Senha', anchor=N, comando=self.senhar,x=100, y=170, width=100, height=30)
-        self.botao2 = self.botoes(self.janela, text='Salvar Senha', anchor=N, comando=self.combinandofunc, x=100,y=200,width=100, height=30)
+        self.botao1 = self.botoes(self.janela,text='Gerar Senha', anchor=N, comando=self.senhar,x=10, y=170, width=100, height=30)
+        self.botao2 = self.botoes(self.janela, text='Salvar Senha', anchor=N, comando=self.combinandofunc, x=10,y=200,width=100, height=30)
+        #self.botao3 = self.botoes(self.janela, text='mostrar senhas', anchor=N, comando=self.abridor, x=170, y=170, width=100, height=30)
         self.janela.config(background='#d3d3d3')
         self.janela.mainloop()
 
@@ -70,7 +71,6 @@ class janela:
                   'u',
                   'v', 'w', 'x', 'y', 'z']
         senha = []
-
         u = choice(lista)
         d = choice(listaa)
         t = choice(listaa)
@@ -104,5 +104,7 @@ class janela:
             self.salvarsenhas()
             self.boxmsg()
 
+    #def abridor(self):
+    #    print(1)
 
 c = janela(titulo='Gerador.py', lxa='300x250')
