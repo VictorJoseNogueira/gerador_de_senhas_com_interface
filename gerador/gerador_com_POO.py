@@ -3,6 +3,10 @@ from tkinter import *
 from tkinter import messagebox
 from random import randint, choice
 import os
+import sys
+sys.platform
+'win32'
+import os
 
 arquivo = os.path.dirname(__file__)
 nome_Do_arquivo_criado = arquivo+'\\gerador_de_senhas_automatico.txt'
@@ -30,10 +34,9 @@ class janela:
         self.check.place(x=10, y=130)
         self.botao1 = self.botoes(self.janela,text='Gerar Senha', anchor=N, comando=self.senhar,x=10, y=170, width=100, height=30)
         self.botao2 = self.botoes(self.janela, text='Salvar Senha', anchor=N, comando=self.combinandofunc, x=10,y=200,width=100, height=30)
-        #self.botao3 = self.botoes(self.janela, text='mostrar senhas', anchor=N, comando=self.abridor, x=170, y=170, width=100, height=30)
+        self.botao3 = self.botoes(self.janela, text='mostrar senhas', anchor=N, comando=self.abridor, x=170, y=170, width=100, height=30)
         self.janela.config(background='#d3d3d3')
         self.janela.mainloop()
-
     def salvarsenhas(self):
         bancodesenhas = open(nome_Do_arquivo_criado, 'a')
         bancodesenhas.write(f'site: ' + self.caixadetexto.get()+'\n')
@@ -129,7 +132,8 @@ class janela:
             self.salvarsenhas()
             self.boxmsg()
 
-    #def abridor(self):
-    #    print(1)
+    def abridor(self):
+        os.startfile(nome_Do_arquivo_criado)
+
 
 c = janela(titulo='Gerador.py', lxa='300x250')

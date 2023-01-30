@@ -1,24 +1,4 @@
-site: a
-login: b
-Senha: $cbppt84
--------------------------------------------------- 
-site: c
-login: d
-Senha: !mkmlu96
--------------------------------------------------- 
-site: a
-login: s
-Senha: %enlpp63
--------------------------------------------------- 
-site: a
-login: s
-Senha: @xqfam39
--------------------------------------------------- 
-site: caterpie
-login: log-out
-Senha: %foqcq83
--------------------------------------------------- 
-site: a
-login: s
-Senha: @zclps33
+site: victorsite
+login: amazon@gmail.com
+Senha: @qdftw77
 -------------------------------------------------- 
