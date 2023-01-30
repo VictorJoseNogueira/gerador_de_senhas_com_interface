@@ -3,10 +3,6 @@ from tkinter import *
 from tkinter import messagebox
 from random import randint, choice
 import os
-import sys
-sys.platform
-'win32'
-import os
 
 arquivo = os.path.dirname(__file__)
 nome_Do_arquivo_criado = arquivo+'\\gerador_de_senhas_automatico.txt'
