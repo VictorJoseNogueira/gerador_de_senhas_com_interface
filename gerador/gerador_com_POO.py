@@ -88,13 +88,8 @@ class janela:
     def senhar(self):
         self.dicionario.clear()
         tamanhos = 16
-        lista = ['!', '@', '#', '$', '%', '&', '*']
-        listaa = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'o', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-                  'u',
-                  'v', 'w', 'x', 'y', 'z']
-        senha = []
         if self.checkbutton.get() == 1:
-            chars = string.ascii_letters + string.digits + '!@#$%&*-_+=?|/¬'
+            chars = string.ascii_letters + string.digits + '!@çÇ#$%&*-_+=?|/¬'
             rng = random.SystemRandom()
             x = ''.join(rng.choice(chars) for i in range(tamanhos))
             self.dicionario.append(x)
