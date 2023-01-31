@@ -3,7 +3,8 @@ from tkinter import *
 from tkinter import messagebox
 from random import randint, choice
 import os
-
+from gerador.testeabrirword import *
+import pyperclip
 arquivo = os.path.dirname(__file__)
 nome_Do_arquivo_criado = arquivo+'\\gerador_de_senhas_automatico.txt'
 
@@ -117,6 +118,7 @@ class janela:
             self.dicionario.append(x)
             print(x)
             messagebox.showinfo('Senha gerada', f'{x}')
+        pyperclip.copy(x)
 
     def combinandofunc(self):
         if len(self.caixadetexto.get()) == 0:
@@ -130,6 +132,5 @@ class janela:
 
     def abridor(self):
         os.startfile(nome_Do_arquivo_criado)
-
 
 c = janela(titulo='Gerador.py', lxa='300x250')

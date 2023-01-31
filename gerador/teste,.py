@@ -20,3 +20,8 @@ z.janela.mainloop()
 
 y = testejanela(titulo='avemaria', tamanho='400x400')
 y.janela.mainloop()
+import sys
+sys.platform
+'win32'
+import os
+os.startfile(r'C:\Users\T-GAMER\Documents\meu_pc_projetos\gerador_de_senhas_com_interface\gerador\gerador_de_senhas_automatico.txt')
