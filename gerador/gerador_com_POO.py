@@ -90,23 +90,51 @@ class janela:
         Button(local, text=text, anchor=anchor, command=comando).place(x=x, y=y, width=width, height=height)
 
     def senhar(self):
-        self.dicionario.clear()
         tamanhos = 16
-        if self.checkbutton.get() == 1:
-            chars = string.ascii_letters + string.digits + '!@çÇ#$%&*-_+=?|/¬'
-            rng = random.SystemRandom()
-            x = ''.join(rng.choice(chars) for i in range(tamanhos))
-            self.dicionario.append(x)
-            print(x)
-            messagebox.showinfo('Senha gerada', f'{x}')
+        self.dicionario.clear()
+        tm = self.caixadetexto4.get()
+        if tm.isnumeric():
+            tm = int(tm)
+            tamanhos = tm
+            print(tm)
+            if self.checkbutton.get() == 1:
+                chars = string.ascii_letters + string.digits + '!@çÇ#$%&*-_+=?|/¬'
+                rng = random.SystemRandom()
+                x = ''.join(rng.choice(chars) for i in range(tamanhos))
+                self.dicionario.append(x)
+                print(x)
+                messagebox.showinfo('Senha gerada', f'{x}')
+            else:
+                chars = string.ascii_letters + string.digits
+                rng = random.SystemRandom()
+                x = ''.join(rng.choice(chars) for i in range(tamanhos))
+                self.dicionario.append(x)
+                print(x)
+                messagebox.showinfo('Senha gerada', f'{x}')
+
+            pyperclip.copy(x)
+        elif tm == '':
+            tamanhos = 12
+            print(tm)
+            if self.checkbutton.get() == 1:
+                chars = string.ascii_letters + string.digits + '!@çÇ#$%&*-_+=?|/¬'
+                rng = random.SystemRandom()
+                x = ''.join(rng.choice(chars) for i in range(tamanhos))
+                self.dicionario.append(x)
+                print(x)
+                messagebox.showinfo('Senha gerada', f'{x}')
+            else:
+                chars = string.ascii_letters + string.digits
+                rng = random.SystemRandom()
+                x = ''.join(rng.choice(chars) for i in range(tamanhos))
+                self.dicionario.append(x)
+                print(x)
+                messagebox.showinfo('Senha gerada', f'{x}')
+
+            pyperclip.copy(x)
         else:
-            chars = string.ascii_letters + string.digits
-            rng = random.SystemRandom()
-            x = ''.join(rng.choice(chars) for i in range(tamanhos))
-            self.dicionario.append(x)
-            print(x)
-            messagebox.showinfo('Senha gerada', f'{x}')
-        pyperclip.copy(x)
+            messagebox.showinfo(title='apenas digitos', message='por favor digite a quantidade em forma de digito!')
+            self.caixadetexto4.delete(0, END)
 
     def combinandofunc(self):
         if len(self.caixadetexto.get()) == 0:
