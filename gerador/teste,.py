@@ -1,27 +1,22 @@
-import tkinter as Tk
-from tkinter import *
-from tkinter import messagebox
-from random import randint, choice
-import os
+import tkinter as tk
+from tkinter import ttk
+from PIL import Image, ImageTk, ImageSequence
 
+root = tk.Tk()
+root.title("Example")
 
-class testejanela:
-    def __init__(self, titulo='', tamanho=''):
-        self.janela = Tk()
-        self.janela.title(titulo)
-        self.janela.geometry(tamanho)
+# Carrega o GIF usando a biblioteca Pillow
+image = Image.open(r"C:\Users\T-GAMER\Desktop\mtrix.gif")
+frames = [ImageTk.PhotoImage(img) for img in ImageSequence.Iterator(image)]
 
+# Cria um label para exibir o GIF
+label = ttk.Label(root, image=frames[0])
+label.pack(fill="both", expand="yes")
 
-z = testejanela(titulo='TAMANHO', tamanho="300x300")
-z.janela.texto = Label(text='AFASFGAFAdfadafsfads')
-z.janela.texto.place(x=110, y=20, height=200)
-z.janela.mainloop()
+# Função que é chamada a cada intervalo de tempo para atualizar a imagem
+def update_frames(index):
+    label.config(image=frames[index])
+    root.after(100, update_frames, (index + 1) % len(frames))
 
-
-y = testejanela(titulo='avemaria', tamanho='400x400')
-y.janela.mainloop()
-import sys
-sys.platform
-'win32'
-import os
-os.startfile(r'C:\Users\T-GAMER\Documents\meu_pc_projetos\gerador_de_senhas_com_interface\gerador\gerador_de_senhas_automatico.txt')
+root.after(0, update_frames, 0)
+root.mainloop()

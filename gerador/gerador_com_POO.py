@@ -20,6 +20,11 @@ class janela:
         self.janela.title(titulo)
         self.janela.geometry(lxa)
 
+        # Image
+        self.image = PhotoImage(file="matrix.gif")
+        self.background_label = Label(self.janela, image=self.image)
+        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
         #escritas
         self.escrita = Label(self.janela, text='Gerador de senhas', anchor=N, background='#d3d3d3', font=('Arial', 15))
         self.escrita.place(x=50, y=10, height=30)
