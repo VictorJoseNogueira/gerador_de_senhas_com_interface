@@ -1,11 +1,10 @@
-import random
 import tkinter
 from tkinter import *
 from tkinter import messagebox
-import random
-import os
-import pyperclip
-import string
+import random, string, os, pyperclip
+from PIL import Image, ImageTk, ImageSequence
+
+
 
 arquivo = os.path.dirname(__file__)
 nome_Do_arquivo_criado = arquivo+'\\gerador_de_senhas_automatico.txt'
@@ -20,10 +19,6 @@ class janela:
         self.janela.title(titulo)
         self.janela.geometry(lxa)
 
-        # Image
-        self.image = PhotoImage(file="matrix.gif")
-        self.background_label = Label(self.janela, image=self.image)
-        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
         #escritas
         self.escrita = Label(self.janela, text='Gerador de senhas', anchor=N, background='#d3d3d3', font=('Arial', 15))
@@ -59,6 +54,29 @@ class janela:
         self.botao2 = self.botoes(self.janela, text='Salvar Senha', anchor=N, comando=self.combinandofunc, x=10,y=300,width=100, height=30)
         self.botao3 = self.botoes(self.janela, text='mostrar senhas', anchor=N, comando=self.abridor, x=170, y=270, width=100, height=30)
         self.janela.config(background='#d3d3d3')
+
+        #tentando gif
+        '''global img
+        self.img = Image.open('mtrix.gif')
+        lbl = Label(self.janela)
+        lbl.place(x=10, y=10)
+        for img in ImageSequence.Iterator(self.img):
+            img = ImageTk.PhotoImage(img)
+            lbl.config(image=img)
+            self.janela.update()'''
+        self.lbl = tkinter.Label(self.janela)
+        self.lbl.pack()
+        # Abre o gif
+        self.img = Image.open("mtrix.gif")
+        # Loop para atualizar a Label com as imagens do gif
+        for img in ImageSequence.Iterator(self.img):
+            self.img = ImageTk.PhotoImage(img)
+            self.lbl.config(image=self.img)
+            self.janela.update()
+
+
+
+
 
         #fim da janela
         self.janela.mainloop()
@@ -154,4 +172,4 @@ class janela:
     def abridor(self):
         os.startfile(nome_Do_arquivo_criado)
 
-c = janela(titulo='Gerador.py', lxa='300x400')
+c = janela(titulo='Gerador.py', lxa='800x800')

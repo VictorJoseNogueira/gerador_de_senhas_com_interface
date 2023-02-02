@@ -1,11 +1,7 @@
-import random
 import tkinter
 from tkinter import *
 from tkinter import messagebox
-import random
-import os
-import pyperclip
-import string
+import random, string, os, pyperclip
 
 arquivo = os.path.dirname(__file__)
 nome_Do_arquivo_criado = arquivo+'\\gerador_de_senhas_automatico.txt'
