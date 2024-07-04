@@ -1,4 +1,0 @@
-site: victorsite
-login: amazon@gmail.com
-Senha: @qdftw77
--------------------------------------------------- 
